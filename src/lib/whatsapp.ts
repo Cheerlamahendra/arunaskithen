@@ -32,3 +32,10 @@ export function generateWhatsAppUrl(items: CartItem[], customer: CustomerDetails
   const message = generateWhatsAppMessage(items, customer);
   return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
 }
+
+export function generateContactWhatsAppUrl() {
+  const message =
+    "Hi Aruna's Kitchen, I would like to know more about your products!";
+
+  return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
+}

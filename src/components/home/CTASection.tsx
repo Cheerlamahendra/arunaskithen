@@ -1,4 +1,5 @@
 import WhatsAppIcon from '@/components/ui/WhatsAppIcon';
+import { generateContactWhatsAppUrl } from '@/lib/whatsapp';
 
 export default function CTASection() {
   return (
@@ -9,7 +10,7 @@ export default function CTASection() {
           <h2>Ready to Taste the Flavors of Rayalaseema?</h2>
           <p>Pick your favorites and send your order directly through WhatsApp.</p>
         </div>
-        <a className="primary-button light" href="https://wa.me/919553357971" target="_blank" rel="noopener noreferrer">
+        <a className="primary-button light" href={generateContactWhatsAppUrl()} target="_blank" rel="noopener noreferrer">
           <WhatsAppIcon size={20} colored={true} /> Order on WhatsApp
         </a>
       </div>

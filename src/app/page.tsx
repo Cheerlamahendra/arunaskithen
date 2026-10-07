@@ -34,7 +34,7 @@ export default function HomePage() {
         <div className="container">
           <div className="section-heading">
             <span>Fresh from our kitchen</span>
-            <h2>Our Homemade Favorites</h2>
+            <h2>Flavors of our Home</h2>
             <p>
               Explore traditional snacks, sweets, pickles, karam and farm products.
             </p>
@@ -52,17 +52,17 @@ export default function HomePage() {
         <div className="container about-grid">
           <div className="about-art">
             {/* Hero image background in About section */}
-            <Image
-              src="/images/hero/rayalaseema-food-hero.png"
-              alt="Authentic Rayalaseema homemade foods"
-              fill
-              sizes="(max-width: 900px) 100vw, 50vw"
+           <Image
+              src="/images/logo/arunas-logo1.jpeg"
+              alt="Aruna’s Kitchen"
+              width={400}
+              height={400}
               className="about-art-bg"
             />
-            <div className="about-art-overlay" />
+            {/* <div className="about-art-overlay" /> */}
 
             {/* Made with Care badge with official logo */}
-            <div className="about-circle">
+            {/* <div className="about-circle">
               <div className="about-logo-wrap">
                 <Image
                   src="/images/logo/arunas-logo.jpeg"
@@ -75,7 +75,7 @@ export default function HomePage() {
               <span>Made with</span>
               <strong>Care</strong>
               <small>Flavors of Rayalaseema</small>
-            </div>
+            </div> */}
           </div>
           <div className="about-copy">
             <span className="eyebrow dark">Our story</span>

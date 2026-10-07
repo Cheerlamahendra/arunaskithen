@@ -24,7 +24,11 @@ export default function Navbar() {
       const aboutEl = document.getElementById('about');
       const contactEl = document.getElementById('contact');
 
-      if (contactEl && scrollY >= contactEl.offsetTop - 300) {
+      const isAtBottom =
+        window.innerHeight + window.scrollY >=
+        document.documentElement.scrollHeight - 50;
+
+      if (isAtBottom || (contactEl && scrollY >= contactEl.offsetTop - 300)) {
         setActiveSection('contact');
       } else if (aboutEl && scrollY >= aboutEl.offsetTop - 300) {
         setActiveSection('about');
