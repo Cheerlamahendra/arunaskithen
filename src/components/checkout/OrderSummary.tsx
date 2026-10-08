@@ -8,6 +8,7 @@ import { generateWhatsAppUrl } from '@/lib/whatsapp';
 import WhatsAppIcon from '@/components/ui/WhatsAppIcon';
 import { useCart } from '@/context/CartContext';
 import { products } from '@/data/products';
+import { packages } from '@/data/packages';
 
 interface OrderSummaryProps {
   items: CartItem[];
@@ -79,7 +80,10 @@ export default function OrderSummary({
           const itemImage =
             item.image ||
             products.find((p) => p.id === item.productId)?.image ||
+            packages.find((pkg) => pkg.id === item.productId)?.image ||
             '/images/logo/arunas-logo.jpeg';
+
+          const unitStr = item.unit && item.unit !== '1 kg' ? 'pack' : 'kg';
 
           return (
             <div className="review-item" key={item.productId}>
@@ -96,7 +100,7 @@ export default function OrderSummary({
                 <div className="review-item-info">
                   <span className="review-item-name">{item.name}</span>
                   <small className="review-item-qty">
-                    {item.quantity} kg × {formatCurrency(item.price)}
+                    {item.quantity} {unitStr} × {formatCurrency(item.price)}
                   </small>
                 </div>
               </div>

@@ -4,14 +4,15 @@ export type ProductCategory =
   | 'Karjikay'
   | 'Karam & Spices'
   | 'Pickles'
-  | 'Farm Products';
+  | 'Farm Products'
+  | 'Packages';
 
 export interface Product {
   id: number;
   name: string;
   slug: string;
   price: number;
-  unit: '1 kg';
+  unit: string;
   category: ProductCategory;
   image: string;
   description: string;
@@ -22,7 +23,20 @@ export interface CartItem {
   productId: number;
   name: string;
   price: number;
-  unit: '1 kg';
+  unit: string;
   quantity: number;
   image: string;
+}
+
+export interface PackageItem {
+  name: string;
+  weight: string;
+  image: string;
+}
+
+export interface PackageOffer extends Product {
+  subtitle: string;
+  originalPrice: number;
+  totalWeight: string;
+  packageItems: PackageItem[];
 }

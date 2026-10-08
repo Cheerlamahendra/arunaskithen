@@ -10,7 +10,7 @@ import WhatsAppIcon from '@/components/ui/WhatsAppIcon';
 
 export default function Navbar() {
   const [drawerOpen, setDrawerOpen] = useState(false);
-  const [activeSection, setActiveSection] = useState<'home' | 'products' | 'about' | 'contact'>('home');
+  const [activeSection, setActiveSection] = useState<'home' | 'products' | 'packages' | 'about' | 'contact'>('home');
   const { getCartItemCount } = useCart();
   const cartCount = getCartItemCount();
 
@@ -21,6 +21,7 @@ export default function Navbar() {
     const handleScroll = () => {
       const scrollY = window.scrollY;
       const productsEl = document.getElementById('products');
+      const packagesEl = document.getElementById('packages');
       const aboutEl = document.getElementById('about');
       const contactEl = document.getElementById('contact');
 
@@ -32,6 +33,8 @@ export default function Navbar() {
         setActiveSection('contact');
       } else if (aboutEl && scrollY >= aboutEl.offsetTop - 300) {
         setActiveSection('about');
+      } else if (packagesEl && scrollY >= packagesEl.offsetTop - 300) {
+        setActiveSection('packages');
       } else if (productsEl && scrollY >= productsEl.offsetTop - 300) {
         setActiveSection('products');
       } else {
@@ -79,6 +82,13 @@ export default function Navbar() {
               className={activeSection === 'products' ? 'nav-active' : ''}
             >
               Products
+            </Link>
+            <Link
+              href="/#packages"
+              onClick={() => setActiveSection('packages')}
+              className={activeSection === 'packages' ? 'nav-active' : ''}
+            >
+              Packages
             </Link>
             <Link
               href="/#about"
@@ -185,6 +195,16 @@ export default function Navbar() {
             Products
           </Link>
           <Link
+            href="/#packages"
+            onClick={() => {
+              setActiveSection('packages');
+              closeDrawer();
+            }}
+            className={`drawer-link ${activeSection === 'packages' ? 'active' : ''}`}
+          >
+            Packages
+          </Link>
+          <Link
             href="/#about"
             onClick={() => {
               setActiveSection('about');
@@ -209,7 +229,7 @@ export default function Navbar() {
         <div className="drawer-footer">
           <a
             className="whatsapp-button full"
-            href="https://wa.me/919553357971?text=Hello%20Aruna%E2%80%99s%20Kitchen%2C%20I%20came%20from%20your%20website%20and%20would%20like%20to%20order."
+            href="https://wa.me/918143645962?text=Hello%20Aruna%E2%80%99s%20Kitchen%2C%20I%20came%20from%20your%20website%20and%20would%20like%20to%20order."
             target="_blank"
             rel="noopener noreferrer"
             onClick={closeDrawer}

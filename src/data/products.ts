@@ -30,6 +30,7 @@ const make = (
   category: Product['category'],
   imageName: string,
   extension: 'svg' | 'png' | 'jpg' | 'jpeg' | 'webp' = 'jpeg',
+  customDescription?: string,
 ): Product => ({
   id,
   name,
@@ -38,7 +39,7 @@ const make = (
   unit: '1 kg',
   category,
   image: `/images/products/${imageName}.${extension}`,
-  description: descriptions[category],
+  description: customDescription || descriptions[category],
   available: true,
 });
 
@@ -54,6 +55,15 @@ export const products: Product[] = [
   make(6, 'Karam Gavallu', 349, 'Snacks', 'karam-gavallu', 'jpeg'),
   make(7, 'Majjigamirchi', 499, 'Snacks', 'majjigamirchi', 'jpeg'),
   make(8, 'Vaddiyallu', 349, 'Snacks', 'vaddiyallu', 'jpeg'),
+  make(
+    33,
+    'Karam Boondi',
+    349,
+    'Snacks',
+    'karam-boondi',
+    'jpg',
+    'Crispy and spicy traditional Rayalaseema Karam Boondi (Carom Boondi / Bundi) prepared with gram flour, roasted peanuts, cashews, and fresh curry leaves.'
+  ),
 
   // =========================
   // SWEETS
@@ -100,9 +110,11 @@ export const products: Product[] = [
   make(32, 'Our Own Farm Palli', 149, 'Farm Products', 'farm-palli', 'png'),
 ];
 
+import { packages } from './packages';
+
 /**
- * Find a product using its slug.
+ * Find a product or package offer using its slug.
  */
-export function getProductBySlug(slug: string) {
-  return products.find((product) => product.slug === slug);
+export function getProductBySlug(slug: string): Product | undefined {
+  return products.find((product) => product.slug === slug) || packages.find((pkg) => pkg.slug === slug);
 }

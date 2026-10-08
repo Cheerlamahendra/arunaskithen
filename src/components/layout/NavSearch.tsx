@@ -5,6 +5,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { Search, X, ChevronRight, Tag } from 'lucide-react';
 import { products } from '@/data/products';
+import { packages } from '@/data/packages';
 import { formatCurrency } from '@/lib/utils';
 
 export default function NavSearch() {
@@ -14,17 +15,18 @@ export default function NavSearch() {
   const containerRef = useRef<HTMLDivElement>(null);
   const mobileInputRef = useRef<HTMLInputElement>(null);
 
-  // Filter products based on search query
+  // Filter products and packages based on search query
   const matchingProducts = useMemo(() => {
     const q = query.trim().toLowerCase();
     if (!q) return [];
-    return products.filter(
+    return [...products, ...packages].filter(
       (p) =>
         p.name.toLowerCase().includes(q) ||
         p.category.toLowerCase().includes(q) ||
         p.description.toLowerCase().includes(q)
     );
   }, [query]);
+
 
   // Focus mobile input when opened
   useEffect(() => {

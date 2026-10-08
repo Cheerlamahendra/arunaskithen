@@ -47,7 +47,7 @@ export default function MobileBottomNav() {
   const whatsappInquiryMessage = encodeURIComponent(
     'Hello Aruna’s Kitchen, I came from your website. Can you please tell me what type of products you are serving and how I can place an order?'
   );
-  const whatsappUrl = `https://wa.me/919553357971?text=${whatsappInquiryMessage}`;
+  const whatsappUrl = `https://wa.me/918143645962?text=${whatsappInquiryMessage}`;
 
   const isHomeActive = pathname === '/' && activeSection === 'home';
   const isProductsActive = (pathname === '/' && activeSection === 'products') || pathname.startsWith('/products');

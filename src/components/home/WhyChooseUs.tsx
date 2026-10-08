@@ -2,10 +2,10 @@ import { Heart, Leaf, Sparkles } from 'lucide-react';
 import WhatsAppIcon from '@/components/ui/WhatsAppIcon';
 
 const features = [
-  [Heart, 'Homemade Taste', 'Traditional recipes prepared with care.'],
-  [Sparkles, 'Authentic Rayalaseema Flavors', 'Inspired by traditional regional food.'],
-  [Leaf, 'Quality Ingredients', 'Carefully selected ingredients for every batch.'],
-  [WhatsAppIcon, 'Easy WhatsApp Ordering', 'Order directly through WhatsApp.'],
+  [Heart, 'Homemade Taste in Kurnool', 'Traditional recipes prepared fresh in Kurnool with authentic care.'],
+  [Sparkles, 'Authentic Rayalaseema Flavors', 'Pure heritage flavors of Rayalaseema made right at home.'],
+  [Leaf, 'Quality Natural Ingredients', 'Handpicked ingredients, pure oils, and farm-fresh spices.'],
+  [WhatsAppIcon, 'Easy WhatsApp Ordering', 'Order directly via WhatsApp at +91 8143645962.'],
 ] as const;
 
 export default function WhyChooseUs() {

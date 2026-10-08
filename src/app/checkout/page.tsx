@@ -21,7 +21,7 @@ const initial: CustomerDetails = {
   city: 'Kurnool',
   district: 'Kurnool',
   state: 'Andhra Pradesh',
-  pincode: '',
+  pincode: '518002',
   landmark: '',
   instructions: '',
 };
@@ -197,7 +197,7 @@ export default function CheckoutPage() {
           <aside className="checkout-note">
             <strong>Ordering directly</strong>
             <p>
-              Your order will be sent to <b>+91 9553357971</b> through WhatsApp.
+              Your order will be sent to <b>+91 8143645962</b> through WhatsApp.
             </p>
             <div className="mini-steps">
               <span>1</span>

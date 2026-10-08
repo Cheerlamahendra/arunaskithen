@@ -9,6 +9,7 @@ import HowToOrder from '@/components/home/HowToOrder';
 import CTASection from '@/components/home/CTASection';
 import ProductGrid from '@/components/products/ProductGrid';
 import CategoryFilter from '@/components/products/CategoryFilter';
+import PackagesSection from '@/components/packages/PackagesSection';
 import { products } from '@/data/products';
 import { type CategoryFilter as CategoryFilterType } from '@/data/categories';
 
@@ -20,7 +21,8 @@ export default function HomePage() {
       products.filter(
         (product) =>
           (category === 'All' || product.category === category) &&
-          product.name.toLowerCase().includes(search.toLowerCase().trim())
+          (product.name.toLowerCase().includes(search.toLowerCase().trim()) ||
+            product.description.toLowerCase().includes(search.toLowerCase().trim()))
       ),
     [category, search]
   );
@@ -48,6 +50,7 @@ export default function HomePage() {
           <ProductGrid products={filtered} />
         </div>
       </section>
+      <PackagesSection />
       <section className="about-section" id="about">
         <div className="container about-grid">
           <div className="about-art">
@@ -79,9 +82,9 @@ export default function HomePage() {
           </div>
           <div className="about-copy">
             <span className="eyebrow dark">Our story</span>
-            <h2>Traditional Taste, Homemade With Love</h2>
+            <h2>Traditional Taste, Homemade With Love in Kurnool</h2>
             <p>
-              Aruna’s Kitchen brings authentic homemade flavors from Rayalaseema to your table. Our traditional snacks, sweets, pickles, karam varieties and farm products are prepared with care, quality ingredients and the taste of home.
+              Aruna’s Kitchen brings authentic homemade food and traditional Rayalaseema flavors to your doorstep in Kurnool. Freshly prepared at Umaha Mahasvare Nagar, Sudereddy Palli Road, Kurnool (518002), our delicious snacks, sweets, pickles, and karam varieties are crafted with pure ingredients, authentic heritage recipes, and genuine home-cooked care.
             </p>
             <div className="about-points">
               <span>✓ Homemade preparation</span>

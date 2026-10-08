@@ -4,12 +4,14 @@ import Image from 'next/image';
 import Link from 'next/link';
 import {
   ArrowLeft,
+  Check,
   ShoppingBag,
   ShoppingCart,
+  Sparkles,
 } from 'lucide-react';
 import { useState } from 'react';
 
-import type { Product } from '@/types/product';
+import type { Product, PackageOffer } from '@/types/product';
 import { useCart } from '@/context/CartContext';
 import { formatCurrency } from '@/lib/utils';
 import QuantitySelector from './QuantitySelector';
@@ -20,6 +22,13 @@ export default function ProductDetails({
   product: Product;
 }) {
   const [added, setAdded] = useState(false);
+  const [activeImage, setActiveImage] = useState<string>(product.image);
+
+  const isPackage =
+    product.category === 'Packages' ||
+    product.unit === 'Combo Pack' ||
+    'packageItems' in (product as unknown as Record<string, unknown>);
+  const packageOffer = isPackage ? (product as PackageOffer) : null;
 
   const {
     addToCart,
@@ -74,55 +83,137 @@ export default function ProductDetails({
     decreaseQuantity(product.id);
   };
 
+  const savings =
+    packageOffer && packageOffer.originalPrice > packageOffer.price
+      ? packageOffer.originalPrice - packageOffer.price
+      : 0;
+
   return (
     <main className="product-detail-page">
       <div className="container">
         {/* Back button */}
         <Link
-          href="/#products"
+          href={isPackage ? '/#packages' : '/#products'}
           className="back-link"
         >
           <ArrowLeft size={17} />
-          Back to products
+          {isPackage ? 'Back to packages' : 'Back to products'}
         </Link>
 
         <div className="product-detail">
           {/* ==============================
               PRODUCT IMAGE
              ============================== */}
-          <div className="detail-image">
+          <div className={`detail-image ${isPackage ? 'is-package-detail' : ''}`}>
             <Image
-              src={product.image}
+              src={activeImage}
               alt={`Homemade ${product.name}`}
               fill
               sizes="(max-width: 800px) 100vw, 50vw"
               priority
+              className={isPackage ? 'package-detail-img' : ''}
             />
+
+            {/* Quick image preview thumbs for packages */}
+            {packageOffer && packageOffer.packageItems && (
+              <div
+                className="package-preview-thumbs detail-preview-thumbs"
+                aria-label="Package items thumbnails"
+              >
+                <button
+                  type="button"
+                  className={`pkg-thumb ${activeImage === packageOffer.image ? 'active' : ''}`}
+                  onClick={() => setActiveImage(packageOffer.image)}
+                  title="View Combo Collage"
+                >
+                  All 3
+                </button>
+                {packageOffer.packageItems.map((item, idx) => (
+                  <button
+                    key={idx}
+                    type="button"
+                    className={`pkg-thumb ${activeImage === item.image ? 'active' : ''}`}
+                    onClick={() => setActiveImage(item.image)}
+                    title={`View ${item.name}`}
+                  >
+                    #{idx + 1}
+                  </button>
+                ))}
+              </div>
+            )}
           </div>
 
           {/* ==============================
               PRODUCT INFORMATION
              ============================== */}
           <div className="detail-copy">
-            <span className="detail-category">
-              {product.category}
-            </span>
+            <div className="detail-header-badges">
+              <span className="detail-category">
+                {isPackage ? (
+                  <>
+                    <Sparkles size={12} className="inline-icon" /> Combo Pack
+                  </>
+                ) : (
+                  product.category
+                )}
+              </span>
 
-            <h1>
-              {product.name}
-            </h1>
+              {savings > 0 && (
+                <span className="package-save-tag detail-save-pill">
+                  Save {formatCurrency(savings)}
+                </span>
+              )}
+            </div>
 
-            <p className="detail-price">
-              {formatCurrency(product.price)}
-              <span> / 1 kg</span>
-            </p>
+            <h1>{product.name}</h1>
 
-            <p>
-              {product.description}
-            </p>
+            {packageOffer && (
+              <div className="package-subtitle detail-package-subline">
+                <span>{packageOffer.subtitle}</span>
+                <span className="package-weight-badge">
+                  {packageOffer.totalWeight} Total
+                </span>
+              </div>
+            )}
+
+            <div className="price-line detail-price-line">
+              <span className="detail-price">
+                {formatCurrency(product.price)}
+                <span> / {product.unit || '1 kg'}</span>
+              </span>
+              {packageOffer && packageOffer.originalPrice > packageOffer.price && (
+                <del className="package-struck-price">
+                  {formatCurrency(packageOffer.originalPrice)}
+                </del>
+              )}
+            </div>
+
+            <p>{product.description}</p>
+
+            {/* Inclusions list for package offers */}
+            {packageOffer && packageOffer.packageItems && (
+              <div className="package-items-box detail-package-box">
+                <strong className="package-items-header">
+                  Includes 3 Handcrafted Delicacies:
+                </strong>
+                <ul className="package-items-list">
+                  {packageOffer.packageItems.map((item, idx) => (
+                    <li key={idx} className="package-item-row">
+                      <span className="package-check-mark">
+                        <Check size={14} strokeWidth={3} />
+                      </span>
+                      <span className="package-item-title">{item.name}</span>
+                      <span className="package-item-qty">{item.weight}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
 
             <div className="detail-note">
-              All listed prices are for 1 kg.
+              {product.unit === 'Combo Pack'
+                ? 'Special handcrafted value combo pack containing 3 authentic delicacies prepared fresh.'
+                : 'All listed prices are for 1 kg freshly prepared.'}
             </div>
 
             {/* =================================
@@ -148,7 +239,7 @@ export default function ProductDetails({
             ) : (
               <div className="detail-row">
                 <span className="detail-total">
-                  Price per kg:{' '}
+                  Price per {product.unit === 'Combo Pack' ? 'pack' : 'kg'}:{' '}
                   <strong>
                     {formatCurrency(product.price)}
                   </strong>
