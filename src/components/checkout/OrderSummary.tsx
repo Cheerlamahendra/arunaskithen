@@ -81,7 +81,7 @@ export default function OrderSummary({
             item.image ||
             products.find((p) => p.id === item.productId)?.image ||
             packages.find((pkg) => pkg.id === item.productId)?.image ||
-            '/images/logo/arunas-logo.jpeg';
+            '/images/logo/arunas-logo.png';
 
           const unitStr = item.unit && item.unit !== '1 kg' ? 'pack' : 'kg';
 

@@ -24,7 +24,7 @@ Specialized for traditional Rayalaseema sweets, spicy karam, crispy snacks, podu
 
 ## 🚀 Technical & Local SEO Optimization
 
-- **Official Brand Favicon Suite**: Generated from `public/images/logo/arunas-logo.jpeg`:
+- **Official Brand Favicon Suite**: Generated from `public/images/logo/arunas-logo.png`:
   - `public/favicon.ico` (multi-size: 16×16, 32×32, 48×48)
   - `public/favicon-16x16.png`, `public/favicon-32x32.png`, `public/favicon-48x48.png`
   - `public/apple-touch-icon.png` (180×180)
@@ -69,7 +69,7 @@ arunas-home-made-food/
 │   ├── android-chrome-*.png         # Android PWA icons (192x192, 512x512)
 │   ├── site.webmanifest             # Web application manifest
 │   └── images/
-│       ├── logo/                    # Brand logo (arunas-logo.jpeg)
+│       ├── logo/                    # Brand logo (arunas-logo.png)
 │       ├── hero/                    # Hero banners & illustrations
 │       ├── categories/              # Category thumbnails
 │       ├── packages/                # Value combo package imagery
@@ -185,9 +185,9 @@ export const WHATSAPP_NUMBER = '918143645962';
 ### 4. Production Domain
 Set `NEXT_PUBLIC_SITE_URL` in your hosting environment variables (e.g., Vercel, Netlify, or `.env.production`):
 ```env
-NEXT_PUBLIC_SITE_URL=https://arunaskitchen.com
+NEXT_PUBLIC_SITE_URL=https://www.arunasskitchen.in
 ```
-Defaults to `https://arunaskitchen.com` if not specified.
+Defaults to `https://www.arunasskitchen.in` if not specified.
 
 ---
 

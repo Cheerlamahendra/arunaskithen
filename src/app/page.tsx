@@ -56,7 +56,7 @@ export default function HomePage() {
           <div className="about-art">
             {/* Hero image background in About section */}
            <Image
-              src="/images/logo/arunas-logo1.jpeg"
+              src="/images/logo/arunas-logo.png"
               alt="Arunass Kitchen"
               width={400}
               height={400}
@@ -68,7 +68,7 @@ export default function HomePage() {
             {/* <div className="about-circle">
               <div className="about-logo-wrap">
                 <Image
-                  src="/images/logo/arunas-logo.jpeg"
+                  src="/images/logo/arunas-logo.png"
                   alt="Arunass Kitchen Logo"
                   width={104}
                   height={104}

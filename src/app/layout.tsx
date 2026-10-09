@@ -6,7 +6,7 @@ import Footer from '@/components/layout/Footer';
 import MobileBottomNav from '@/components/layout/MobileBottomNav';
 import { CartProvider } from '@/context/CartContext';
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://arunaskitchen.com';
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.arunasskitchen.in';
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -130,7 +130,7 @@ export default function RootLayout({
         url: siteUrl,
         telephone: '+918143645962',
         image: `${siteUrl}/images/og-image.jpg`,
-        logo: `${siteUrl}/images/logo/arunas-logo.jpeg`,
+        logo: `${siteUrl}/images/logo/arunas-logo.png`,
         priceRange: '₹₹',
         currenciesAccepted: 'INR',
         paymentAccepted: 'Cash, UPI, Google Pay, PhonePe, WhatsApp Order',

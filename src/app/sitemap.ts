@@ -3,7 +3,7 @@ import { products } from '@/data/products';
 import { packages } from '@/data/packages';
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://arunaskitchen.com';
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.arunasskitchen.in';
   const currentDate = new Date();
 
   // Primary indexable pages

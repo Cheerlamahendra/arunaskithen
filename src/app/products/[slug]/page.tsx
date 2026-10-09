@@ -17,7 +17,7 @@ export async function generateMetadata({
   const product = getProductBySlug(slug);
   if (!product) return {};
 
-  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://arunaskitchen.com';
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.arunasskitchen.in';
   const title = `${product.name} (${product.category})`;
   const description = `${product.description} Freshly prepared with traditional Rayalaseema recipes by Arunass Kitchen in Kurnool, Andhra Pradesh. Order authentic homemade ${product.name} on WhatsApp: +91 8143645962.`;
 
@@ -70,7 +70,7 @@ export default async function ProductPage({
   const product = getProductBySlug(slug);
   if (!product) notFound();
 
-  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://arunaskitchen.com';
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.arunasskitchen.in';
 
   const schemaGraph = {
     '@context': 'https://schema.org',

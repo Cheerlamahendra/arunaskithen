@@ -3,7 +3,8 @@ const path = require('path');
 const sharp = require('sharp');
 
 async function generateFavicons() {
-  const sourceLogo = path.join(__dirname, '..', 'public', 'images', 'logo', 'arunas-logo.jpeg');
+  const logoDir = path.join(__dirname, '..', 'public', 'images', 'logo');
+  const sourceLogo = path.join(logoDir, 'arunas-logo.png');
   const publicDir = path.join(__dirname, '..', 'public');
   const appDir = path.join(__dirname, '..', 'src', 'app');
 
@@ -12,9 +13,20 @@ async function generateFavicons() {
     process.exit(1);
   }
 
-  console.log('Generating favicon assets from:', sourceLogo);
+  console.log('Generating favicon assets and clean logo fallbacks from:', sourceLogo);
 
-  // 1. Generate PNG sizes
+  // 1. Generate clean JPEGs without checkerboard (using the transparent PNG on cream background)
+  await sharp(sourceLogo)
+    .flatten({ background: '#fff8ea' })
+    .jpeg({ quality: 95 })
+    .toFile(path.join(logoDir, 'arunas-logo.jpeg'));
+  await sharp(sourceLogo)
+    .flatten({ background: '#fff8ea' })
+    .jpeg({ quality: 95 })
+    .toFile(path.join(logoDir, 'arunas-logo1.jpeg'));
+  console.log('Generated clean: arunas-logo.jpeg and arunas-logo1.jpeg');
+
+  // 2. Generate PNG sizes
   const sizes = [
     { name: 'favicon-16x16.png', size: 16, dir: publicDir },
     { name: 'favicon-32x32.png', size: 32, dir: publicDir },
@@ -35,7 +47,7 @@ async function generateFavicons() {
     console.log(`Generated: ${item.name} (${item.size}x${item.size})`);
   }
 
-  // 2. Generate multi-size favicon.ico (16, 32, 48) with PNG format
+  // 3. Generate multi-size favicon.ico (16, 32, 48) with PNG format
   const png16 = await sharp(sourceLogo).resize(16, 16).png().toBuffer();
   const png32 = await sharp(sourceLogo).resize(32, 32).png().toBuffer();
   const png48 = await sharp(sourceLogo).resize(48, 48).png().toBuffer();
@@ -50,9 +62,8 @@ async function generateFavicons() {
   fs.writeFileSync(path.join(appDir, 'favicon.ico'), icoBuffer);
   console.log('Generated: favicon.ico (multi-size: 16, 32, 48)');
 
-  // 3. Generate high quality Open Graph sharing image (1200x630)
+  // 4. Generate high quality Open Graph sharing image (1200x630)
   const ogOutPath = path.join(publicDir, 'images', 'og-image.jpg');
-  // Create 1200x630 card with warm background and logo
   const logoResized = await sharp(sourceLogo)
     .resize(460, 460, { fit: 'contain' })
     .png()
@@ -99,7 +110,7 @@ async function generateFavicons() {
     .toFile(ogOutPath);
 
   console.log('Generated: og-image.jpg (1200x630)');
-  console.log('All favicon and SEO social assets generated successfully!');
+  console.log('All favicon, clean logo, and SEO social assets generated successfully!');
 }
 
 function createIcoFromPngs(images) {
@@ -109,23 +120,23 @@ function createIcoFromPngs(images) {
   let offset = headerSize + count * dirEntrySize;
 
   const header = Buffer.alloc(headerSize);
-  header.writeUInt16LE(0, 0); // Reserved
-  header.writeUInt16LE(1, 2); // ICO type
-  header.writeUInt16LE(count, 4); // Number of images
+  header.writeUInt16LE(0, 0);
+  header.writeUInt16LE(1, 2);
+  header.writeUInt16LE(count, 4);
 
   const dirEntries = [];
   const buffers = [];
 
   for (const img of images) {
     const entry = Buffer.alloc(dirEntrySize);
-    entry.writeUInt8(img.size === 256 ? 0 : img.size, 0); // Width
-    entry.writeUInt8(img.size === 256 ? 0 : img.size, 1); // Height
-    entry.writeUInt8(0, 2); // Color palette
-    entry.writeUInt8(0, 3); // Reserved
-    entry.writeUInt16LE(1, 4); // Color planes
-    entry.writeUInt16LE(32, 6); // Bits per pixel
-    entry.writeUInt32LE(img.buffer.length, 8); // Image byte size
-    entry.writeUInt32LE(offset, 12); // File offset
+    entry.writeUInt8(img.size === 256 ? 0 : img.size, 0);
+    entry.writeUInt8(img.size === 256 ? 0 : img.size, 1);
+    entry.writeUInt8(0, 2);
+    entry.writeUInt8(0, 3);
+    entry.writeUInt16LE(1, 4);
+    entry.writeUInt16LE(32, 6);
+    entry.writeUInt32LE(img.buffer.length, 8);
+    entry.writeUInt32LE(offset, 12);
 
     dirEntries.push(entry);
     buffers.push(img.buffer);

@@ -54,7 +54,7 @@ export default function Navbar() {
           {/* Brand Logo & Name */}
           <Link href="/" className="brand" onClick={closeDrawer} aria-label="Arunass Kitchen home">
             <Image
-              src="/images/logo/arunas-logo.jpeg"
+              src="/images/logo/arunas-logo.png"
               alt="Arunass Kitchen - Flavors of Rayalaseema"
               width={64}
               height={64}
@@ -154,7 +154,7 @@ export default function Navbar() {
         <div className="drawer-header">
           <div className="drawer-brand">
             <Image
-              src="/images/logo/arunas-logo.jpeg"
+              src="/images/logo/arunas-logo.png"
               alt="Arunass Kitchen"
               width={46}
               height={46}

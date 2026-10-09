@@ -8,7 +8,7 @@ export default function Footer() {
     <footer className="site-footer" id="contact">
       <div className="container footer-grid">
         <div className="footer-brand">
-          <Image src="/images/logo/arunas-logo.jpeg" alt="Arunass Kitchen logo" width={82} height={82} />
+          <Image src="/images/logo/arunas-logo.png" alt="Arunass Kitchen logo" width={82} height={82} />
           <h3>Arunass Kitchen</h3>
           <p>Traditional homemade foods from Kurnool with the warmth and taste of Rayalaseema.</p>
           <p>Address:</p>
