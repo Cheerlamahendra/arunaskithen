@@ -43,9 +43,9 @@ export default function MobileBottomNav() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, [pathname]);
 
-  // WhatsApp inquiry message to Aruna's Kitchen
+  // WhatsApp inquiry message to Arunass Kitchen
   const whatsappInquiryMessage = encodeURIComponent(
-    'Hello Aruna’s Kitchen, I came from your website. Can you please tell me what type of products you are serving and how I can place an order?'
+    'Hello Arunass Kitchen, I came from your website. Can you please tell me what type of products you are serving and how I can place an order?'
   );
   const whatsappUrl = `https://wa.me/918143645962?text=${whatsappInquiryMessage}`;
 
@@ -85,6 +85,8 @@ export default function MobileBottomNav() {
         {/* 3. Cart - Highlighted & Centered with Scale-up Animation */}
         <Link
           href="/cart"
+          id="mobile-cart-icon"
+          data-cart-target="mobile"
           className={`bottom-nav-item bottom-nav-cart-item ${isCartActive ? 'active' : ''}`}
           aria-label={`Cart with ${cartCount} items`}
         >

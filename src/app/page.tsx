@@ -57,7 +57,7 @@ export default function HomePage() {
             {/* Hero image background in About section */}
            <Image
               src="/images/logo/arunas-logo1.jpeg"
-              alt="Aruna’s Kitchen"
+              alt="Arunass Kitchen"
               width={400}
               height={400}
               className="about-art-bg"
@@ -69,7 +69,7 @@ export default function HomePage() {
               <div className="about-logo-wrap">
                 <Image
                   src="/images/logo/arunas-logo.jpeg"
-                  alt="Aruna’s Kitchen Logo"
+                  alt="Arunass Kitchen Logo"
                   width={104}
                   height={104}
                   className="about-logo-img"
@@ -84,7 +84,7 @@ export default function HomePage() {
             <span className="eyebrow dark">Our story</span>
             <h2>Traditional Taste, Homemade With Love in Kurnool</h2>
             <p>
-              Aruna’s Kitchen brings authentic homemade food and traditional Rayalaseema flavors to your doorstep in Kurnool. Freshly prepared at Umaha Mahasvare Nagar, Sudereddy Palli Road, Kurnool (518002), our delicious snacks, sweets, pickles, and karam varieties are crafted with pure ingredients, authentic heritage recipes, and genuine home-cooked care.
+              Arunass Kitchen brings authentic homemade food and traditional Rayalaseema flavors to your doorstep in Kurnool. Freshly prepared at Umaha Mahasvare Nagar, Sudereddy Palli Road, Kurnool (518002), our delicious snacks, sweets, pickles, and karam varieties are crafted with pure ingredients, authentic heritage recipes, and genuine home-cooked care.
             </p>
             <div className="about-points">
               <span>✓ Homemade preparation</span>

@@ -1,0 +1,26 @@
+{
+  "name": "Arunass Kitchen - Flavors of Rayalaseema",
+  "short_name": "Arunass Kitchen",
+  "description": "Authentic homemade Rayalaseema sweets, snacks, and traditional pickles in Kurnool, Andhra Pradesh.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#fffdf9",
+  "theme_color": "#8b1e14",
+  "icons": [
+    {
+      "src": "/favicon-32x32.png",
+      "sizes": "32x32",
+      "type": "image/png"
+    },
+    {
+      "src": "/android-chrome-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

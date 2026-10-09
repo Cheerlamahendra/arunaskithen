@@ -30,17 +30,17 @@ export default function PackageCard({
   const cartItem = items.find((item) => item.productId === packageOffer.id);
   const isInCart = Boolean(cartItem && cartItem.quantity > 0);
 
-  const handleAddToCart = () => {
-    addToCart(packageOffer, 1);
+  const handleAddToCart = (e?: React.MouseEvent<HTMLButtonElement>) => {
+    addToCart(packageOffer, 1, e?.currentTarget);
     setAdded(true);
     window.setTimeout(() => {
       setAdded(false);
     }, 1000);
   };
 
-  const handleIncrease = () => {
+  const handleIncrease = (e?: React.MouseEvent<HTMLButtonElement>) => {
     if (!cartItem) return;
-    increaseQuantity(packageOffer.id);
+    increaseQuantity(packageOffer.id, e?.currentTarget);
   };
 
   const handleDecrease = () => {

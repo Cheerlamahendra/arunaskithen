@@ -18,8 +18,8 @@ export async function generateMetadata({
   if (!product) return {};
 
   const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://arunaskitchen.com';
-  const title = `${product.name} | Authentic Rayalaseema Home Food | Aruna’s Kitchen Kurnool`;
-  const description = `Buy authentic homemade ${product.name} in Kurnool from Aruna’s Kitchen. Handcrafted with traditional Rayalaseema recipes and quality ingredients. Order fresh on WhatsApp: +91 8143645962.`;
+  const title = `${product.name} (${product.category})`;
+  const description = `${product.description} Freshly prepared with traditional Rayalaseema recipes by Arunass Kitchen in Kurnool, Andhra Pradesh. Order authentic homemade ${product.name} on WhatsApp: +91 8143645962.`;
 
   return {
     title,
@@ -28,30 +28,35 @@ export async function generateMetadata({
       product.name,
       `${product.name} Kurnool`,
       `homemade ${product.name}`,
-      'home foods in Kurnool',
-      'Aruna’s Kitchen',
-      'Arunas Kitchen',
+      `${product.category} in Kurnool`,
+      'Arunass Kitchen',
+      'Arunass Kitchen Kurnool',
       'Rayalaseema foods Kurnool',
+      'authentic homemade food Kurnool',
     ],
     alternates: {
       canonical: `/products/${product.slug}`,
     },
     openGraph: {
-      title,
+      title: `${product.name} | Arunass Kitchen Kurnool`,
       description,
       url: `${siteUrl}/products/${product.slug}`,
+      siteName: 'Arunass Kitchen',
+      type: 'article',
       images: [
         {
-          url: product.image,
-          alt: `Homemade ${product.name} - Aruna’s Kitchen Kurnool`,
+          url: `${siteUrl}${product.image}`,
+          width: 800,
+          height: 800,
+          alt: `${product.name} - Traditional Homemade ${product.category} from Arunass Kitchen Kurnool`,
         },
       ],
     },
     twitter: {
       card: 'summary_large_image',
-      title,
+      title: `${product.name} | Arunass Kitchen Kurnool`,
       description,
-      images: [product.image],
+      images: [`${siteUrl}${product.image}`],
     },
   };
 }
@@ -66,28 +71,70 @@ export default async function ProductPage({
   if (!product) notFound();
 
   const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://arunaskitchen.com';
-  const productJsonLd = {
+
+  const schemaGraph = {
     '@context': 'https://schema.org',
-    '@type': 'Product',
-    name: product.name,
-    image: `${siteUrl}${product.image}`,
-    description: product.description,
-    brand: {
-      '@type': 'Brand',
-      name: 'Aruna’s Kitchen',
-    },
-    offers: {
-      '@type': 'Offer',
-      priceCurrency: 'INR',
-      price: product.price,
-      availability: product.available
-        ? 'https://schema.org/InStock'
-        : 'https://schema.org/OutOfStock',
-      seller: {
-        '@type': 'LocalBusiness',
-        name: 'Aruna’s Kitchen Kurnool',
+    '@graph': [
+      {
+        '@type': 'BreadcrumbList',
+        '@id': `${siteUrl}/products/${product.slug}#breadcrumb`,
+        itemListElement: [
+          {
+            '@type': 'ListItem',
+            position: 1,
+            name: 'Home',
+            item: siteUrl,
+          },
+          {
+            '@type': 'ListItem',
+            position: 2,
+            name: 'Products',
+            item: `${siteUrl}/#products`,
+          },
+          {
+            '@type': 'ListItem',
+            position: 3,
+            name: product.name,
+            item: `${siteUrl}/products/${product.slug}`,
+          },
+        ],
       },
-    },
+      {
+        '@type': 'Product',
+        '@id': `${siteUrl}/products/${product.slug}#product`,
+        name: product.name,
+        image: `${siteUrl}${product.image}`,
+        description: product.description,
+        category: product.category,
+        brand: {
+          '@type': 'Brand',
+          name: 'Arunass Kitchen',
+        },
+        offers: {
+          '@type': 'Offer',
+          url: `${siteUrl}/products/${product.slug}`,
+          priceCurrency: 'INR',
+          price: product.price,
+          priceValidUntil: '2026-12-31',
+          availability: product.available
+            ? 'https://schema.org/InStock'
+            : 'https://schema.org/OutOfStock',
+          itemCondition: 'https://schema.org/NewCondition',
+          seller: {
+            '@type': 'LocalBusiness',
+            name: 'Arunass Kitchen Kurnool',
+            telephone: '+918143645962',
+            address: {
+              '@type': 'PostalAddress',
+              addressLocality: 'Kurnool',
+              addressRegion: 'Andhra Pradesh',
+              postalCode: '518002',
+              addressCountry: 'IN',
+            },
+          },
+        },
+      },
+    ],
   };
 
   return (
@@ -95,7 +142,7 @@ export default async function ProductPage({
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify(productJsonLd),
+          __html: JSON.stringify(schemaGraph),
         }}
       />
       <ProductDetails product={product} />

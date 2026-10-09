@@ -26,7 +26,7 @@ export function generateWhatsAppMessage(items: CartItem[], customer: CustomerDet
     .join('\n\n');
 
 
-  return `Hello Aruna’s Kitchen,\n\nI would like to place an order.\n\nCustomer Details:\nName: ${customer.name}\nMobile: ${customer.mobile}\n\nDelivery Address:\nDoor No: ${customer.doorNo || '-'}\nStreet/Area: ${customer.street}\nCity: ${customer.city}\nDistrict: ${customer.district || '-'}\nState: ${customer.state || 'Andhra Pradesh'}\nPincode: ${customer.pincode || '-'}\nLandmark: ${customer.landmark || '-'}\n\nOrder Details:\n\n${orderLines}\n\n--------------------------------\nSubtotal: ${formatCurrency(subtotal)}\nTotal Amount: ${formatCurrency(subtotal)}\n--------------------------------\n\nAdditional Instructions:\n${customer.instructions || '-'}\n\nPlease confirm my order.`;
+  return `Hello Arunass Kitchen,\n\nI would like to place an order.\n\nCustomer Details:\nName: ${customer.name}\nMobile: ${customer.mobile}\n\nDelivery Address:\nDoor No: ${customer.doorNo || '-'}\nStreet/Area: ${customer.street}\nCity: ${customer.city}\nDistrict: ${customer.district || '-'}\nState: ${customer.state || 'Andhra Pradesh'}\nPincode: ${customer.pincode || '-'}\nLandmark: ${customer.landmark || '-'}\n\nOrder Details:\n\n${orderLines}\n\n--------------------------------\nSubtotal: ${formatCurrency(subtotal)}\nTotal Amount: ${formatCurrency(subtotal)}\n--------------------------------\n\nAdditional Instructions:\n${customer.instructions || '-'}\n\nPlease confirm my order.`;
 }
 
 export function generateWhatsAppUrl(items: CartItem[], customer: CustomerDetails) {
@@ -36,7 +36,7 @@ export function generateWhatsAppUrl(items: CartItem[], customer: CustomerDetails
 
 export function generateContactWhatsAppUrl() {
   const message =
-    "Hi Aruna's Kitchen, I would like to know more about your products!";
+    "Hi Arunass Kitchen, I would like to know more about your products!";
 
   return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
 }

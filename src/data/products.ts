@@ -17,7 +17,7 @@ const descriptions: Record<string, string> = {
     'Bold, tangy and spicy homemade pickle with a traditional Andhra touch.',
 
   'Farm Products':
-    'A carefully selected farm product from the Aruna’s Kitchen collection.',
+    'A carefully selected farm product from the Arunass Kitchen collection.',
 };
 
 /**

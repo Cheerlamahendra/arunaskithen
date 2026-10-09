@@ -31,7 +31,7 @@ export default function CartItem({ item }: { item: CartItemType }) {
           <QuantitySelector
             quantity={item.quantity}
             onDecrease={() => decreaseQuantity(item.productId)}
-            onIncrease={() => increaseQuantity(item.productId)}
+            onIncrease={(e) => increaseQuantity(item.productId, e?.currentTarget)}
           />
           <strong>{formatCurrency(item.price * item.quantity)}</strong>
         </div>

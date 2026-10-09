@@ -52,7 +52,7 @@ export default function Navbar() {
       <header className="site-header">
         <div className="container nav-inner">
           {/* Brand Logo & Name */}
-          <Link href="/" className="brand" onClick={closeDrawer} aria-label="Aruna’s Kitchen home">
+          <Link href="/" className="brand" onClick={closeDrawer} aria-label="Arunass Kitchen home">
             <Image
               src="/images/logo/arunas-logo.jpeg"
               alt="Arunass Kitchen - Flavors of Rayalaseema"
@@ -114,6 +114,8 @@ export default function Navbar() {
             {/* Desktop Cart Icon Button (hidden on mobile) */}
             <Link
               href="/cart"
+              id="desktop-cart-icon"
+              data-cart-target="desktop"
               className="icon-button cart-button desktop-only"
               aria-label={`Cart with ${cartCount} items`}
             >
@@ -229,7 +231,7 @@ export default function Navbar() {
         <div className="drawer-footer">
           <a
             className="whatsapp-button full"
-            href="https://wa.me/918143645962?text=Hello%20Aruna%E2%80%99s%20Kitchen%2C%20I%20came%20from%20your%20website%20and%20would%20like%20to%20order."
+            href="https://wa.me/918143645962?text=Hello%20Arunass%20Kitchen%2C%20I%20came%20from%20your%20website%20and%20would%20like%20to%20order."
             target="_blank"
             rel="noopener noreferrer"
             onClick={closeDrawer}

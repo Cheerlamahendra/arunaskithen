@@ -4,8 +4,8 @@ import { Minus, Plus } from 'lucide-react';
 
 interface QuantitySelectorProps {
   quantity: number;
-  onDecrease: () => void;
-  onIncrease: () => void;
+  onDecrease: (e?: React.MouseEvent<HTMLButtonElement>) => void;
+  onIncrease: (e?: React.MouseEvent<HTMLButtonElement>) => void;
 }
 
 export default function QuantitySelector({

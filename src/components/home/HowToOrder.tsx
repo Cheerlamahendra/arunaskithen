@@ -4,7 +4,7 @@ import WhatsAppIcon from '@/components/ui/WhatsAppIcon';
 const steps = [
   [Utensils, '01', 'Choose Your Favorites', 'Browse snacks, sweets, pickles and other products.'],
   [ShoppingCart, '02', 'Add To Cart', 'Select quantity and review your order.'],
-  [WhatsAppIcon, '03', 'Order On WhatsApp', 'Enter your details and send the order directly to Aruna’s Kitchen.'],
+  [WhatsAppIcon, '03', 'Order On WhatsApp', 'Enter your details and send the order directly to Arunass Kitchen.'],
 ] as const;
 
 export default function HowToOrder() {

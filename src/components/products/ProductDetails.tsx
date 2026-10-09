@@ -51,8 +51,8 @@ export default function ProductDetails({
   /*
    * ADD TO CART
    */
-  const handleAddToCart = () => {
-    addToCart(product, 1);
+  const handleAddToCart = (e?: React.MouseEvent<HTMLButtonElement>) => {
+    addToCart(product, 1, e?.currentTarget);
     setAdded(true);
     window.setTimeout(() => {
       setAdded(false);
@@ -62,9 +62,9 @@ export default function ProductDetails({
   /*
    * PLUS
    */
-  const handleIncrease = () => {
+  const handleIncrease = (e?: React.MouseEvent<HTMLButtonElement>) => {
     if (!cartItem) return;
-    increaseQuantity(product.id);
+    increaseQuantity(product.id, e?.currentTarget);
   };
 
   /*
