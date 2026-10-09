@@ -55,14 +55,14 @@ export default function Navbar() {
           <Link href="/" className="brand" onClick={closeDrawer} aria-label="Aruna’s Kitchen home">
             <Image
               src="/images/logo/arunas-logo.jpeg"
-              alt="Aruna’s Kitchen - Flavors of Rayalaseema"
+              alt="Arunass Kitchen - Flavors of Rayalaseema"
               width={64}
               height={64}
               className="brand-logo"
               priority
             />
             <span className="brand-copy">
-              <strong>Aruna’s Kitchen</strong>
+              <strong>Arunass Kitchen</strong>
               <small>Flavors of Rayalaseema</small>
             </span>
           </Link>
@@ -153,13 +153,13 @@ export default function Navbar() {
           <div className="drawer-brand">
             <Image
               src="/images/logo/arunas-logo.jpeg"
-              alt="Aruna’s Kitchen"
+              alt="Arunass Kitchen"
               width={46}
               height={46}
               className="brand-logo"
             />
             <div className="drawer-brand-text">
-              <strong>Aruna’s Kitchen</strong>
+              <strong>Arunass Kitchen</strong>
               <small>Flavors of Rayalaseema</small>
             </div>
           </div>
