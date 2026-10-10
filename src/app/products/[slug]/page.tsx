@@ -35,7 +35,7 @@ export async function generateMetadata({
       'authentic homemade food Kurnool',
     ],
     alternates: {
-      canonical: `/products/${product.slug}`,
+      canonical: `${siteUrl}/products/${product.slug}`,
     },
     openGraph: {
       title: `${product.name} | Arunass Kitchen Kurnool`,
@@ -83,7 +83,7 @@ export default async function ProductPage({
             '@type': 'ListItem',
             position: 1,
             name: 'Home',
-            item: siteUrl,
+            item: `${siteUrl}/`,
           },
           {
             '@type': 'ListItem',

@@ -9,7 +9,6 @@ import { CartProvider } from '@/context/CartContext';
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.arunasskitchen.in';
 
 export const metadata: Metadata = {
-  metadataBase: new URL(siteUrl),
   title: {
     default: 'Arunass Kitchen | Homemade Foods & Traditional Pickles in Kurnool',
     template: '%s | Arunass Kitchen Kurnool',
@@ -35,7 +34,7 @@ export const metadata: Metadata = {
     'Kurnool home foods delivery',
     'Umaha Mahasvare Nagar Kurnool',
   ],
-  authors: [{ name: 'Arunass Kitchen', url: siteUrl }],
+  authors: [{ name: 'Arunass Kitchen', url: `${siteUrl}/` }],
   creator: 'Arunass Kitchen',
   publisher: 'Arunass Kitchen',
   formatDetection: {
@@ -44,7 +43,7 @@ export const metadata: Metadata = {
     telephone: true,
   },
   alternates: {
-    canonical: '/',
+    canonical: `${siteUrl}/`,
   },
   icons: {
     icon: [
@@ -63,7 +62,7 @@ export const metadata: Metadata = {
     title: 'Arunass Kitchen | Homemade Foods & Traditional Pickles in Kurnool',
     description:
       'Discover authentic homemade sweets, traditional Rayalaseema pickles, spice powders and snacks from Arunass Kitchen in Kurnool, Andhra Pradesh.',
-    url: siteUrl,
+    url: `${siteUrl}/`,
     siteName: 'Arunass Kitchen',
     locale: 'en_IN',
     type: 'website',
@@ -106,7 +105,7 @@ export default function RootLayout({
       {
         '@type': 'WebSite',
         '@id': `${siteUrl}/#website`,
-        url: siteUrl,
+        url: `${siteUrl}/`,
         name: 'Arunass Kitchen',
         alternateName: 'Arunass Kitchen Kurnool',
         description:
@@ -127,7 +126,7 @@ export default function RootLayout({
         ],
         description:
           'Authentic homemade Rayalaseema snacks, sweets, karam powders, and pickles made fresh with traditional recipes in Kurnool, Andhra Pradesh.',
-        url: siteUrl,
+        url: `${siteUrl}/`,
         telephone: '+918143645962',
         image: `${siteUrl}/images/og-image.jpg`,
         logo: `${siteUrl}/images/logo/arunas-logo.png`,

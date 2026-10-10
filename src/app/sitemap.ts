@@ -9,7 +9,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   // Primary indexable pages
   const staticRoutes: MetadataRoute.Sitemap = [
     {
-      url: siteUrl,
+      url: `${siteUrl}/`,
       lastModified: currentDate,
       changeFrequency: 'daily',
       priority: 1.0,
